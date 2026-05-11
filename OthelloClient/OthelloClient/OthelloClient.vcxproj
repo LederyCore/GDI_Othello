@@ -19,6 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="_sources\core\Window\OthelloWindow.cpp" />
+    <ClCompile Include="_sources\core\Window\BaseWindow.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="_sources\core\Window\WindowFactory.cpp" />
     <ClCompile Include="_sources\core\Main.cpp" />
     <ClCompile Include="_sources\core\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -27,6 +32,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="_sources\core\pch.h" />
+    <ClInclude Include="_sources\core\Window\OthelloWindow.h" />
+    <ClInclude Include="_sources\core\Window\BaseWindow.h" />
+    <ClInclude Include="_sources\core\Window\WindowFactory.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -115,6 +123,7 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir)_sources\core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
