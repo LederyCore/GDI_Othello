@@ -1,12 +1,7 @@
 #pragma once
-#include "BaseWindow.h"
-
-class OthelloWindow : public BaseWindow
+#include "WndBase.h"
+class OthelloWindow : public WndBase
 {
-public :
-	OthelloWindow(const wchar_t* name) : BaseWindow(name) { }
-	virtual ~OthelloWindow() override;
-
-protected :
-	LRESULT MsgProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam) override;
+	// WndBase을(를) 통해 상속됨
+	void OnClose() override;
 };

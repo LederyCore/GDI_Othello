@@ -21,13 +21,16 @@
     <ClCompile Include="_sources\core\pch.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="_sources\core\Window\WindowFactory.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="_sources\core\Window\BaseWindow.cpp">
+    <ClCompile Include="_sources\core\Window\WndBase.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="_sources\core\Window\OthelloWindow.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="_sources\core\Engine\Engine.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="_sources\core\Renderer\GDIRenderer.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,13 +38,19 @@
     <ClInclude Include="_sources\core\pch.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="_sources\core\Window\WindowFactory.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="_sources\core\Window\BaseWindow.h">
+    <ClInclude Include="_sources\core\Window\WndBase.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="_sources\core\Window\OthelloWindow.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="_sources\core\Engine\Engine.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="_sources\core\Renderer\Renderer.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="_sources\core\Renderer\GDIRenderer.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

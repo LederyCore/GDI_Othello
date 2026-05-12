@@ -1,12 +1,7 @@
 #include "pch.h"
 #include "OthelloWindow.h"
 
-OthelloWindow::~OthelloWindow()
+void OthelloWindow::OnClose()
 {
 
-}
-
-LRESULT OthelloWindow::MsgProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
-{
-	return LRESULT();
 }
