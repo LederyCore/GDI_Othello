@@ -1,34 +1,32 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36">
   <diagram name="페이지-1" id="AzWjSueaDokXYa37jS0J">
-    <mxGraphModel dx="512" dy="294" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="711" dy="883" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="KsqaJLePcnn8EeuQi_dI-1" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;" target="XbJg7xXYLWSemABnesnM-1" value="창하나를 띄워라">
-          <mxGeometry relative="1" width="80" as="geometry">
-            <mxPoint x="120" y="130" as="sourcePoint" />
-            <mxPoint x="200" y="130" as="targetPoint" />
-          </mxGeometry>
+        <mxCell id="st-vxe-VHVlH2gm14zUo-1" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="Engine" vertex="1">
+          <mxGeometry height="218" width="210" x="80" y="100" as="geometry" />
         </mxCell>
-        <mxCell id="KsqaJLePcnn8EeuQi_dI-2" parent="1" style="ellipse;html=1;shape=startState;fillColor=#000000;strokeColor=#ff0000;" value="" vertex="1">
-          <mxGeometry height="30" width="30" x="40" y="50" as="geometry" />
+        <mxCell id="st-vxe-VHVlH2gm14zUo-2" parent="st-vxe-VHVlH2gm14zUo-1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ m_window : WndBase*&lt;div&gt;+ m_renderer : Renderer*&amp;nbsp;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="54" width="210" y="26" as="geometry" />
         </mxCell>
-        <mxCell id="KsqaJLePcnn8EeuQi_dI-3" edge="1" parent="1" source="KsqaJLePcnn8EeuQi_dI-2" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;" value="">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="120" y="130" as="targetPoint" />
-          </mxGeometry>
+        <mxCell id="st-vxe-VHVlH2gm14zUo-3" parent="st-vxe-VHVlH2gm14zUo-1" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="210" y="80" as="geometry" />
         </mxCell>
-        <mxCell id="XbJg7xXYLWSemABnesnM-1" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="WindowFactory" vertex="1">
-          <mxGeometry height="130" width="262" x="200" y="60" as="geometry" />
+        <mxCell id="st-vxe-VHVlH2gm14zUo-4" parent="st-vxe-VHVlH2gm14zUo-1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ Engine(): void&lt;div&gt;+ &amp;lt;&amp;lt;virtual&amp;gt;&amp;gt; ~Engine() : void&lt;/div&gt;&lt;div&gt;+ Initialize(int width, int height) : bool&lt;/div&gt;&lt;div&gt;+ Run() : void&lt;/div&gt;&lt;div&gt;+ Shutdown() : void&lt;/div&gt;&lt;div&gt;- Update() : void&lt;/div&gt;&lt;div&gt;- FixedUpdate() : void&lt;/div&gt;&lt;div&gt;- Render() : void&lt;/div&gt;" vertex="1">
+          <mxGeometry height="130" width="210" y="88" as="geometry" />
         </mxCell>
-        <mxCell id="XbJg7xXYLWSemABnesnM-2" parent="XbJg7xXYLWSemABnesnM-1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ field: type" vertex="1">
-          <mxGeometry height="26" width="262" y="26" as="geometry" />
+        <mxCell id="st-vxe-VHVlH2gm14zUo-5" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="WndBase" vertex="1">
+          <mxGeometry height="250" width="240" x="390" y="100" as="geometry" />
         </mxCell>
-        <mxCell id="XbJg7xXYLWSemABnesnM-3" parent="XbJg7xXYLWSemABnesnM-1" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
-          <mxGeometry height="8" width="262" y="52" as="geometry" />
+        <mxCell id="st-vxe-VHVlH2gm14zUo-6" parent="st-vxe-VHVlH2gm14zUo-5" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ field: type" vertex="1">
+          <mxGeometry height="26" width="240" y="26" as="geometry" />
         </mxCell>
-        <mxCell id="XbJg7xXYLWSemABnesnM-4" parent="XbJg7xXYLWSemABnesnM-1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ WindowFactory(type): void&lt;div&gt;+ Create(const wchar_t* name, int width, int height) : HWND&lt;/div&gt;" vertex="1">
-          <mxGeometry height="70" width="262" y="60" as="geometry" />
+        <mxCell id="st-vxe-VHVlH2gm14zUo-7" parent="st-vxe-VHVlH2gm14zUo-5" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="240" y="52" as="geometry" />
+        </mxCell>
+        <mxCell id="st-vxe-VHVlH2gm14zUo-8" parent="st-vxe-VHVlH2gm14zUo-5" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ WndBase(): void&lt;div&gt;+ &amp;lt;&amp;lt;virtual&amp;gt;&amp;gt; ~WndBase() : voiid&lt;/div&gt;&lt;div&gt;+ Create(const wchar_t* className, const wchar_t* windowName, int width, int height) : bool&lt;/div&gt;&lt;div&gt;+ Destroy() : void&lt;/div&gt;&lt;div&gt;+ GetHandle() : void*&lt;/div&gt;" vertex="1">
+          <mxGeometry height="190" width="240" y="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
