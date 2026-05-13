@@ -9,7 +9,7 @@
 Engine::Engine()
 {
 	m_window = new OthelloWindow();
-	m_renderer = new GDIRenderer(m_window->GetHandle());
+	m_renderer = new GDIRenderer();
 	m_sceneManager = new SceneManager();
 }
 
@@ -33,7 +33,7 @@ bool Engine::Initialize(int width, int height)
 		return false;
 	}
 
-	// InitRenderer();
+	m_renderer->Initialize(m_window->GetHandle());
 	// InitSceneManager();
 
 	return true;

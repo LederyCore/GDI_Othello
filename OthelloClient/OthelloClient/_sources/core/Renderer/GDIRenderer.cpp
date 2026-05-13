@@ -2,26 +2,28 @@
 #include "GDIRenderer.h"
 #include "../core/Engine/IScene.h"
 
-GDIRenderer::GDIRenderer(void* hwnd) : Renderer(hwnd)
-{
-	RECT rect;
-	GetClientRect(m_hwnd, &rect);
-	m_width  = rect.right  - rect.left;
-	m_height = rect.bottom - rect.top;
-
-	// 더블 버퍼링 관련 멤버 초기화
-	m_hdc		= GetDC(m_hwnd);
-	m_memDC		= CreateCompatibleDC(m_hdc);
-	m_memBitmap = CreateCompatibleBitmap(m_hdc, m_width, m_height);
-	m_oldBitmap = (HBITMAP)SelectObject(m_memDC, m_memBitmap);
-}
-
 GDIRenderer::~GDIRenderer()
 {
 	SelectObject(m_memDC, m_oldBitmap);
 	DeleteObject(m_memBitmap);
 	DeleteDC(m_memDC);
 	ReleaseDC(m_hwnd, m_hdc);
+}
+
+void GDIRenderer::Initialize(void* hwnd)
+{
+	m_hwnd = static_cast<HWND>(hwnd);
+
+	RECT rect;
+	GetClientRect(m_hwnd, &rect);
+	m_width = rect.right - rect.left;
+	m_height = rect.bottom - rect.top;
+
+	// 더블 버퍼링 관련 멤버 초기화
+	m_hdc = GetDC(m_hwnd);
+	m_memDC = CreateCompatibleDC(m_hdc);
+	m_memBitmap = CreateCompatibleBitmap(m_hdc, m_width, m_height);
+	m_oldBitmap = (HBITMAP)SelectObject(m_memDC, m_memBitmap);
 }
 
 void GDIRenderer::BeginFrame()
