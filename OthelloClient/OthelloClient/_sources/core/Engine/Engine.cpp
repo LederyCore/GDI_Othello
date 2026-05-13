@@ -2,12 +2,15 @@
 #include "Engine.h"
 #include "Window/OthelloWindow.h"
 #include "Renderer/GDIRenderer.h"
+#include "SceneManager.h"
+#include "IScene.h"
 #include <iostream>
 
 Engine::Engine()
 {
 	m_window = new OthelloWindow();
 	m_renderer = new GDIRenderer(m_window->GetHandle());
+	m_sceneManager = new SceneManager();
 }
 
 Engine::~Engine()
@@ -31,6 +34,7 @@ bool Engine::Initialize(int width, int height)
 	}
 
 	// InitRenderer();
+	// InitSceneManager();
 
 	return true;
 }
@@ -47,7 +51,9 @@ void Engine::Run()
 		}
 		else
 		{
+			Input();
 			Update();
+			LateUpdate();
 			Render();
 		}
 	}
@@ -55,22 +61,49 @@ void Engine::Run()
 
 void Engine::Shutdown()
 {
+	// 소멸은 항상 생성 순서의 역순
+	delete m_sceneManager;
+	delete m_renderer;
+	delete m_window;
 
+	m_sceneManager = nullptr;
+	m_renderer = nullptr;
+	m_window = nullptr;
 }
 
-void Engine::Update()
+void Engine::Input()
 {
+	IScene* scene = m_sceneManager->GetActiveScene();
 
+	//scene->Input();
 }
 
 void Engine::FixedUpdate()
 {
+	IScene* scene = m_sceneManager->GetActiveScene();
 
+	//scene->FixedUpdate();
+}
+
+void Engine::Update()
+{
+	IScene* scene = m_sceneManager->GetActiveScene();
+
+	//scene->Update();
+}
+
+void Engine::LateUpdate()
+{
+	IScene* scene = m_sceneManager->GetActiveScene();
+
+	//scene->LateUpdate();
 }
 
 void Engine::Render()
 {
+	IScene* scene = m_sceneManager->GetActiveScene();
+
 	m_renderer->BeginFrame();
-	m_renderer->RenderScene();
+	m_renderer->RenderScene(scene);
 	m_renderer->EndFrame();
 }

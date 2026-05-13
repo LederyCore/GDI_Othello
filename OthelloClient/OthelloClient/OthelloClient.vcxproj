@@ -19,6 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="_sources\core\Engine\Object.cpp" />
+    <ClCompile Include="_sources\core\Engine\SceneManager.cpp" />
+    <ClCompile Include="_sources\core\Engine\IScene.cpp" />
     <ClCompile Include="_sources\core\Renderer\GDIRenderer.cpp" />
     <ClCompile Include="_sources\core\Engine\Engine.cpp" />
     <ClCompile Include="_sources\core\Window\OthelloWindow.cpp" />
@@ -30,6 +33,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="_sources\core\Engine\Object.h" />
+    <ClInclude Include="_sources\core\Engine\SceneManager.h" />
+    <ClInclude Include="_sources\core\Engine\IScene.h" />
     <ClInclude Include="_sources\core\Renderer\GDIRenderer.h" />
     <ClInclude Include="_sources\core\Renderer\Renderer.h" />
     <ClInclude Include="_sources\core\Engine\Engine.h" />

@@ -2,7 +2,7 @@
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
-class WndBase
+class WndBase abstract
 {
 public:
 	WndBase() = default;

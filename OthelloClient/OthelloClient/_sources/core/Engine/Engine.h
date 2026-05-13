@@ -1,6 +1,7 @@
 #pragma once
 class WndBase;
 class Renderer;
+class SceneManager;
 
 class Engine
 {
@@ -12,11 +13,14 @@ public :
 	void Run();
 	void Shutdown();
 private : 
-	void Update();
+	void Input();
 	void FixedUpdate();
+	void Update();
+	void LateUpdate();
 	void Render();
 
 private :
-	WndBase* m_window = nullptr;
-	Renderer* m_renderer = nullptr;
+	WndBase* m_window				= nullptr;
+	Renderer* m_renderer			= nullptr;
+	SceneManager* m_sceneManager	= nullptr;
 };
