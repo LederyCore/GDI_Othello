@@ -7,6 +7,7 @@ public :
 	SceneManager() = default;
 	virtual ~SceneManager();
 
+	void Initialize();
 	IScene* GetActiveScene() const;
 private :
 	IScene* m_currentActiveScene = nullptr;

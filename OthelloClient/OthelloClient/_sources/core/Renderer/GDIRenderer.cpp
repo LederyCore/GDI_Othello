@@ -37,36 +37,37 @@ void GDIRenderer::BeginFrame()
 
 void GDIRenderer::RenderScene(IScene* scene)
 {
-	//for (auto* go : scene->GetGameObjects())
-	//{
+	for (const auto& go : scene->GetGameObjects())
+	{
 
-	//}
+	}
 
 	// --- 테스트 코드 ---
 
 	// 1. 흰색 사각형
-	HBRUSH whiteBrush = CreateSolidBrush(RGB(255, 255, 255));
-	RECT rect = { 100, 100, 300, 300 };
-	FillRect(m_memDC, &rect, whiteBrush);
-	DeleteObject(whiteBrush);
+	//HBRUSH whiteBrush = CreateSolidBrush(RGB(255, 255, 255));
+	//RECT rect = { 100, 100, 300, 300 };
+	//FillRect(m_memDC, &rect, whiteBrush);
+	//DeleteObject(whiteBrush);
 
-	// 2. 빨간 원
-	HBRUSH redBrush = CreateSolidBrush(RGB(255, 0, 0));
-	HPEN   noPen = (HPEN)GetStockObject(NULL_PEN);
-	SelectObject(m_memDC, redBrush);
-	SelectObject(m_memDC, noPen);
-	Ellipse(m_memDC, 350, 100, 550, 300);
-	DeleteObject(redBrush);
+	//// 2. 빨간 원
+	//HBRUSH redBrush = CreateSolidBrush(RGB(255, 0, 0));
+	//HPEN   noPen = (HPEN)GetStockObject(NULL_PEN);
+	//SelectObject(m_memDC, redBrush);
+	//SelectObject(m_memDC, noPen);
+	//Ellipse(m_memDC, 350, 100, 550, 300);
+	//DeleteObject(redBrush);
 
-	// 3. 텍스트
-	SetTextColor(m_memDC, RGB(0, 255, 0));
-	SetBkMode(m_memDC, TRANSPARENT);
-	TextOut(m_memDC, 100, 350, L"GDI Renderer OK", 15);
+	//// 3. 텍스트
+	//SetTextColor(m_memDC, RGB(0, 255, 0));
+	//SetBkMode(m_memDC, TRANSPARENT);
+	//TextOut(m_memDC, 100, 350, L"GDI Renderer OK", 15);
 
 	// --- 테스트 코드 끝 ---
 }
 
 void GDIRenderer::EndFrame()
 {
+	// 백버퍼 데이터를 프론트 버퍼로 '복사'
 	BitBlt(m_hdc, 0, 0, m_width, m_height, m_memDC, 0, 0, SRCCOPY);
 }

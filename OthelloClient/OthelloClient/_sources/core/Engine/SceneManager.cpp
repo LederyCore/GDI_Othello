@@ -6,7 +6,12 @@ SceneManager::~SceneManager()
 
 }
 
+void SceneManager::Initialize()
+{
+
+}
+
 IScene* SceneManager::GetActiveScene() const
 {
-	return nullptr;
+	return m_currentActiveScene;
 }

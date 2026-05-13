@@ -33,8 +33,8 @@ bool Engine::Initialize(int width, int height)
 		return false;
 	}
 
-	m_renderer->Initialize(m_window->GetHandle());
-	// InitSceneManager();
+	m_renderer		->Initialize(m_window->GetHandle());
+	m_sceneManager	->Initialize();
 
 	return true;
 }

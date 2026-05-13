@@ -1,5 +1,5 @@
 #pragma once
-class GameObjectBase;
+class GameObject;
 
 class IScene abstract
 {
@@ -10,6 +10,7 @@ public :
 	virtual void FixedUpdate() = 0;
 	virtual void Update() = 0;
 	virtual void LateUpdate() = 0;
+	virtual void Render() = 0;
 
-	virtual const std::vector<GameObjectBase*>& GetGameObjects() = 0;
+	virtual const std::vector<GameObject*>& GetGameObjects() = 0;
 };
