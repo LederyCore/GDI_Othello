@@ -3,5 +3,9 @@
 
 OthelloComponent::Transform::Transform()
 {
+	m_localPosition = Vector2f();
+}
 
+OthelloComponent::Transform::~Transform()
+{
 }

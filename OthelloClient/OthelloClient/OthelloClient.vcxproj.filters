@@ -101,5 +101,8 @@
     <ClInclude Include="_sources\core\Engine\Transform.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="_sources\utils\Vector2f.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

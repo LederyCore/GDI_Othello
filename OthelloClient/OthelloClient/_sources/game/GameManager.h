@@ -5,6 +5,7 @@ namespace OthelloGameObject
 {
 	class GameManager : GameObject
 	{
-
+	public :
+		GameManager();
 	};
 }
