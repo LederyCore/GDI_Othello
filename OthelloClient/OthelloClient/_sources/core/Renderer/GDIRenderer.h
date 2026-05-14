@@ -9,14 +9,12 @@ public :
 
 	void Initialize(void* hwnd) override;
 	void BeginFrame() override;
-	void RenderScene(IScene* scene) override;
+	void RenderScene(Scene* scene) override;
+	void RenderFPS(float fps) override;
 	void EndFrame() override;
-
 private :
 	HDC m_hdc = nullptr;
 	HDC m_memDC = nullptr;
 	HBITMAP m_memBitmap = nullptr;
 	HBITMAP m_oldBitmap = nullptr;
-
-
 };

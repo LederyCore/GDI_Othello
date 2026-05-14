@@ -19,6 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="_sources\core\Engine\Scene.cpp" />
+    <ClCompile Include="_sources\core\Engine\Transform.cpp" />
+    <ClCompile Include="_sources\game\GameManager.cpp" />
+    <ClCompile Include="_sources\core\Engine\Component.cpp" />
+    <ClCompile Include="_sources\scenes\TitleScene.cpp" />
+    <ClCompile Include="_sources\utils\GameTimer.cpp" />
     <ClCompile Include="_sources\core\Engine\GameObject.cpp" />
     <ClCompile Include="_sources\core\Engine\SceneManager.cpp" />
     <ClCompile Include="_sources\core\Renderer\GDIRenderer.cpp" />
@@ -32,9 +38,14 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="_sources\core\Engine\Transform.h" />
+    <ClInclude Include="_sources\game\GameManager.h" />
+    <ClInclude Include="_sources\core\Engine\Component.h" />
+    <ClInclude Include="_sources\scenes\TitleScene.h" />
+    <ClInclude Include="_sources\utils\GameTimer.h" />
     <ClInclude Include="_sources\core\Engine\GameObject.h" />
     <ClInclude Include="_sources\core\Engine\SceneManager.h" />
-    <ClInclude Include="_sources\core\Engine\IScene.h" />
+    <ClInclude Include="_sources\core\Engine\Scene.h" />
     <ClInclude Include="_sources\core\Renderer\GDIRenderer.h" />
     <ClInclude Include="_sources\core\Renderer\Renderer.h" />
     <ClInclude Include="_sources\core\Engine\Engine.h" />

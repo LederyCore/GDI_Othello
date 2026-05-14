@@ -18,6 +18,9 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		PostQuitMessage(0);
 		break;
 	}
+	case WM_SETCURSOR:
+		SetCursor(LoadCursor(nullptr, IDC_ARROW));
+		break;
 	default:
 		return::DefWindowProc(hwnd, msg, wParam, lParam);
 	}
@@ -28,6 +31,7 @@ bool WndBase::Create(const wchar_t* className, const wchar_t* windowName, int wi
 {
 	WNDCLASSEX wc = {};
 	wc.cbSize = sizeof(WNDCLASSEX);
+	wc.hCursor = LoadCursor(nullptr, IDC_ARROW);
 	wc.lpszClassName = className;
 	wc.lpfnWndProc = WndProc;
 
@@ -46,8 +50,18 @@ bool WndBase::Create(const wchar_t* className, const wchar_t* windowName, int wi
 	AdjustWindowRect(&rc,
 		WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX, FALSE);
 
-	m_hWnd = CreateWindowEx(NULL, MAKEINTATOM(classId), L"", WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT,
-		rc.right - rc.left, rc.bottom - rc.top, HWND(), HMENU(), HINSTANCE(), NULL);
+	// 실제 윈도우 크기
+	int realW = rc.right - rc.left;
+	int realH = rc.bottom - rc.top;
+
+	// 중앙 좌표 계산
+	int x = (GetSystemMetrics(SM_CXSCREEN) - realW) / 2;
+	int y = (GetSystemMetrics(SM_CYSCREEN) - realH) / 2;
+
+	m_hWnd = CreateWindowEx(NULL, MAKEINTATOM(classId), L"", WS_OVERLAPPEDWINDOW,
+		x, y,          // ← CW_USEDEFAULT 대신
+		realW, realH,
+		HWND(), HMENU(), HINSTANCE(), NULL);
 
 	if (NULL == m_hWnd) return false;
 	::SetWindowText((HWND)m_hWnd, windowName);

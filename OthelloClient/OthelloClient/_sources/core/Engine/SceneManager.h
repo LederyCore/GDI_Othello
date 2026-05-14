@@ -1,14 +1,18 @@
 #pragma once
-class IScene;
+class Scene;
 
 class SceneManager
 {
 public :
-	SceneManager() = default;
+	SceneManager();
 	virtual ~SceneManager();
 
+	static SceneManager* GetInstance();
+	static Scene* GetActiveScene();
+
 	void Initialize();
-	IScene* GetActiveScene() const;
 private :
-	IScene* m_currentActiveScene = nullptr;
+	static SceneManager* Instance;
+
+	Scene* m_currentActiveScene = nullptr;
 };

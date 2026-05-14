@@ -3,11 +3,15 @@
 #include "Window/OthelloWindow.h"
 #include "Renderer/GDIRenderer.h"
 #include "SceneManager.h"
-#include "IScene.h"
+#include "Scene.h"
+#include "../utils/GameTimer.h"
 #include <iostream>
+
+#define FIXED_TIMESTEP 16.6f
 
 Engine::Engine()
 {
+	m_timer = new GameTimer();
 	m_window = new OthelloWindow();
 	m_renderer = new GDIRenderer();
 	m_sceneManager = new SceneManager();
@@ -15,15 +19,23 @@ Engine::Engine()
 
 Engine::~Engine()
 {
+	delete m_sceneManager;
+	m_sceneManager = nullptr;
+
 	delete m_renderer;
 	m_renderer = nullptr;  
 
 	delete m_window;
 	m_window = nullptr;   
+
+	delete m_timer;
+	m_timer = nullptr;
 }
 
 bool Engine::Initialize(int width, int height)
 {
+	m_timer->Reset();
+
 	const wchar_t* className = L"OthelloEngine_0.1";
 	const wchar_t* windowName = L"Othello";
 
@@ -42,6 +54,7 @@ bool Engine::Initialize(int width, int height)
 void Engine::Run()
 {
 	MSG msg = { 0 };
+
 	while (msg.message != WM_QUIT)
 	{
 		if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
@@ -51,9 +64,21 @@ void Engine::Run()
 		}
 		else
 		{
+			m_timer->Tick();
+
+			m_fDeltaTime = m_timer->DeltaTimeMS();
+			m_fFrameCount += m_timer->DeltaTime();
+
 			Input();
-			Update();
-			LateUpdate();
+
+			while (m_fFrameCount >= FIXED_TIMESTEP)
+			{
+				FixedUpdate(FIXED_TIMESTEP);
+				m_fFrameCount -= FIXED_TIMESTEP;
+			}
+
+			Update(m_fDeltaTime);
+			LateUpdate(m_fDeltaTime);
 			Render();
 		}
 	}
@@ -62,48 +87,54 @@ void Engine::Run()
 void Engine::Shutdown()
 {
 	// 소멸은 항상 생성 순서의 역순
-	delete m_sceneManager;
-	delete m_renderer;
-	delete m_window;
+	delete		m_sceneManager;
+	delete		m_renderer;
+	delete		m_window;
+	delete		m_timer;
 
-	m_sceneManager = nullptr;
-	m_renderer = nullptr;
-	m_window = nullptr;
+	m_sceneManager		= nullptr;
+	m_renderer			= nullptr;
+	m_window			= nullptr;
+	m_timer				= nullptr;
 }
 
 void Engine::Input()
 {
-	IScene* scene = m_sceneManager->GetActiveScene();
+	Scene* scene = m_sceneManager->GetActiveScene();
 
-	//scene->Input();
+	
 }
 
-void Engine::FixedUpdate()
+void Engine::FixedUpdate(float fixedTime)
 {
-	IScene* scene = m_sceneManager->GetActiveScene();
+	Scene* scene = m_sceneManager->GetActiveScene();
 
-	//scene->FixedUpdate();
+	scene->FixedUpdate(fixedTime);
 }
 
-void Engine::Update()
+void Engine::Update(float deltaTime)
 {
-	IScene* scene = m_sceneManager->GetActiveScene();
+	Scene* scene = m_sceneManager->GetActiveScene();
 
-	//scene->Update();
+	scene->Update(deltaTime);
 }
 
-void Engine::LateUpdate()
+void Engine::LateUpdate(float deltaTime)
 {
-	IScene* scene = m_sceneManager->GetActiveScene();
+	Scene* scene = m_sceneManager->GetActiveScene();
 
-	//scene->LateUpdate();
+	scene->LateUpdate(deltaTime);
 }
 
 void Engine::Render()
 {
-	IScene* scene = m_sceneManager->GetActiveScene();
+	Scene* scene = m_sceneManager->GetActiveScene();
 
 	m_renderer->BeginFrame();
 	m_renderer->RenderScene(scene);
+
+	float fps = 1.0f / m_timer->DeltaTime();
+	m_renderer->RenderFPS(fps);
+
 	m_renderer->EndFrame();
 }

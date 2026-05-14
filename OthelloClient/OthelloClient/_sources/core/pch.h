@@ -12,3 +12,4 @@
 #pragma comment(lib, "msimg32.lib")        // AlphaBlend 함수가 포함된 라이브러리
 
 #include <vector>
+#include <chrono>
