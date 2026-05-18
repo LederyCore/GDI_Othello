@@ -13,3 +13,6 @@
 
 #include <vector>
 #include <chrono>
+
+#include "../utils/Vector2f.h"
+#include "../utils/DebugConsole.h"

@@ -1,11 +1,10 @@
 #pragma once
 #include "../core/Engine/GameObject.h"
-
 namespace OthelloGameObject
 {
-	class GameManager : public GameObject
+	class DoroTest : public GameObject
 	{
 	public :
-		GameManager();
+		DoroTest();
 	};
 }

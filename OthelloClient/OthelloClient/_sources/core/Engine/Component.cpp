@@ -13,6 +13,11 @@ bool Component::GetActive() const
     return m_isActive;
 }
 
+GameObject* Component::GetOwner() const
+{
+    return m_owner;
+}
+
 void Component::ToggleActive(bool active)
 {
     if (active)

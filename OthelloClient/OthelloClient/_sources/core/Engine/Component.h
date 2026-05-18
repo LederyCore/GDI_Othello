@@ -1,4 +1,5 @@
 #pragma once
+class GameObject;
 
 class Component abstract
 {
@@ -10,11 +11,14 @@ public :
 	virtual void FixedUpdate(float fixedTime) {}
 	virtual void Update(float deltaTime) {}
 	virtual void LateUpdate(float deltaTime) {}
-	virtual void Render() {}
+	virtual void Render(HDC hdc) {}
 	virtual void OnDisable() {}
 
 	void SetActive(bool active);
 	bool GetActive() const;
+
+	void SetOwner(GameObject* owner) { m_owner = owner; }
+	GameObject* GetOwner() const;
 protected :
 
 
@@ -23,5 +27,6 @@ private :
 
 
 private :
+	GameObject* m_owner = nullptr;
 	bool m_isActive = true;
 };

@@ -5,9 +5,11 @@
 #include "SceneManager.h"
 #include "Scene.h"
 #include "../utils/GameTimer.h"
+#include "../utils/DebugConsole.h"
+#include "../utils/Renderhelp.h"
 #include <iostream>
 
-#define FIXED_TIMESTEP 16.6f
+#define FIXED_TIMESTEP 0.0166f  // 16.6ms = 0.0166초 (60 FPS)
 
 Engine::Engine()
 {
@@ -34,6 +36,7 @@ Engine::~Engine()
 
 bool Engine::Initialize(int width, int height)
 {
+	CoInitializeEx(nullptr, COINIT_APARTMENTTHREADED);
 	m_timer->Reset();
 
 	const wchar_t* className = L"OthelloEngine_0.1";
@@ -48,6 +51,9 @@ bool Engine::Initialize(int width, int height)
 	m_renderer		->Initialize(m_window->GetHandle());
 	m_sceneManager	->Initialize();
 
+	//renderHelp::Initialize();
+
+	LOG_INFO("엔진 초기화 완료");
 	return true;
 }
 
@@ -86,6 +92,8 @@ void Engine::Run()
 
 void Engine::Shutdown()
 {
+	CoUninitialize();
+
 	// 소멸은 항상 생성 순서의 역순
 	delete		m_sceneManager;
 	delete		m_renderer;
@@ -96,6 +104,7 @@ void Engine::Shutdown()
 	m_renderer			= nullptr;
 	m_window			= nullptr;
 	m_timer				= nullptr;
+
 }
 
 void Engine::Input()

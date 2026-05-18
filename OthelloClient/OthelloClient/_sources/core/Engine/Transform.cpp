@@ -2,11 +2,13 @@
 #include "Transform.h"
 
 OthelloComponent::Transform::Transform()
+    : m_localPosition(Vector2f::zero)
+    , m_scale(Vector2f::one)
 {
-	m_localPosition = Vector2f();
 }
 
-OthelloComponent::Transform::~Transform()
+OthelloComponent::Transform::Transform(float x, float y)
+    : m_localPosition(x, y)
+    , m_scale(Vector2f::one)
 {
-
 }

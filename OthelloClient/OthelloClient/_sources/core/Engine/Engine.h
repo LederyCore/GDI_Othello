@@ -1,4 +1,5 @@
 #pragma once
+
 class WndBase;
 class Renderer;
 class SceneManager;

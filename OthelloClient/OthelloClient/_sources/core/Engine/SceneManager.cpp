@@ -19,6 +19,7 @@ SceneManager::~SceneManager()
 void SceneManager::Initialize()
 {
 	m_currentActiveScene = new TitleScene();
+	m_currentActiveScene->Enter();
 }
 
 SceneManager* SceneManager::GetInstance()

@@ -5,7 +5,7 @@
 GameObject::GameObject()
 {
 	using namespace OthelloComponent;
-	AddComponent(new Transform());
+	AddComponent<Transform>();
 }
 
 GameObject::~GameObject()
@@ -57,11 +57,11 @@ void GameObject::LateUpdate(float deltaTime)
 	}
 }
 
-void GameObject::Render()
+void GameObject::Render(HDC hdc)
 {
 	for (const auto& c : m_components)
 	{
-		c->Render();
+		c->Render(hdc);
 	}
 }
 
@@ -86,12 +86,4 @@ void GameObject::SetActive(bool active)
 												// 비활성화 상태였으면 아무것도 안하고 리턴
 		}
 	}
-}
-
-void GameObject::AddComponent(Component* component)
-{
-	m_components.push_back(component);
-	component->Awake();
-	if (m_isActive && component->GetActive())
-		component->OnEnable();
 }

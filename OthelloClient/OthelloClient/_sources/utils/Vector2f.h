@@ -9,6 +9,12 @@ struct Vector2f
 	float X;
 	float Y;
 
+	static const Vector2f right;
+	static const Vector2f left;
+	static const Vector2f up;
+	static const Vector2f down;
+	static const Vector2f zero;
+	static const Vector2f one;
 
 	Vector2f operator+(const Vector2f& other) const
 	{

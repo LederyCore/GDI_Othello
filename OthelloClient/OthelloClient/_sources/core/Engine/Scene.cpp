@@ -34,18 +34,17 @@ void Scene::LateUpdate(float deltaTime)
 	}
 }
 
-void Scene::Render()
+void Scene::Render(HDC hdc)
 {
 	for (const auto& go : m_rootObjects)
 	{
-		go->Render();
+		go->Render(hdc);
 	}
 }
 
-bool Scene::AddGameObject(GameObject*)
+bool Scene::AddGameObject(GameObject* go)
 {
-
-
-
-	return false;
+	if (go == nullptr) return false;
+	m_rootObjects.push_back(go);
+	return true;
 }

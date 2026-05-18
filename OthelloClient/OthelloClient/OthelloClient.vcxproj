@@ -19,11 +19,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="_sources\components\DoroComponent.cpp" />
+    <ClCompile Include="_sources\utils\Renderhelp.cpp" />
+    <ClCompile Include="_sources\game\DoroTest.cpp" />
+    <ClCompile Include="_sources\core\Engine\GDISpriteRenderer.cpp" />
     <ClCompile Include="_sources\core\Engine\Scene.cpp" />
     <ClCompile Include="_sources\core\Engine\Transform.cpp" />
     <ClCompile Include="_sources\game\GameManager.cpp" />
     <ClCompile Include="_sources\core\Engine\Component.cpp" />
     <ClCompile Include="_sources\scenes\TitleScene.cpp" />
+    <ClCompile Include="_sources\utils\DebugConsole.cpp" />
     <ClCompile Include="_sources\utils\GameTimer.cpp" />
     <ClCompile Include="_sources\core\Engine\GameObject.cpp" />
     <ClCompile Include="_sources\core\Engine\SceneManager.cpp" />
@@ -36,8 +41,14 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="_sources\utils\Vector2f.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="_sources\components\DoroComponent.h" />
+    <ClInclude Include="_sources\utils\Renderhelp.h" />
+    <ClInclude Include="_sources\game\DoroTest.h" />
+    <ClInclude Include="_sources\core\Engine\GDISpriteRenderer.h" />
+    <ClInclude Include="_sources\utils\DebugConsole.h" />
     <ClInclude Include="_sources\utils\Vector2f.h" />
     <ClInclude Include="_sources\core\Engine\Transform.h" />
     <ClInclude Include="_sources\game\GameManager.h" />
@@ -53,6 +64,9 @@
     <ClInclude Include="_sources\core\Window\OthelloWindow.h" />
     <ClInclude Include="_sources\core\Window\WndBase.h" />
     <ClInclude Include="_sources\core\pch.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="_resources\sprite\Doro.png" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -106,6 +120,14 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <PublicIncludeDirectories>
+    </PublicIncludeDirectories>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <PublicIncludeDirectories>
+    </PublicIncludeDirectories>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -142,12 +164,16 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>$(ProjectDir)_sources\core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /E /Y /I "$(ProjectDir)_resources" "$(OutDir)_resources"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -160,12 +186,16 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir)_sources\core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /E /Y /I "$(ProjectDir)_resources" "$(OutDir)_resources"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

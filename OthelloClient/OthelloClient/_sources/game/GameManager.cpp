@@ -1,12 +1,15 @@
 #include "pch.h"
 #include "GameManager.h"
 #include "../utils/Vector2f.h"
+#include "../utils/DebugConsole.h"
+#include "../core/Engine/SceneManager.h"
+#include "../core/Engine/Scene.h"
+#include "../game/DoroTest.h"
 
 OthelloGameObject::GameManager::GameManager()
 {
-	Vector2f v1{ 1, 2 };
-	Vector2f v2{ 3, 4 };
+	LOG_INFO("게임 매니저 초기화 완료");
 
-	v1 += v2;
-	v1 *= 3;
+	Scene* scene = SceneManager::GetActiveScene();
+	scene->AddGameObject(new DoroTest());
 }

@@ -5,4 +5,6 @@ class TitleScene : public Scene
 public :
 	TitleScene();
 	virtual ~TitleScene();
+
+	void Enter() override;
 };
