@@ -8,4 +8,5 @@ OthelloComponent::Transform::Transform()
 
 OthelloComponent::Transform::~Transform()
 {
+
 }
