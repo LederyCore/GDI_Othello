@@ -2,7 +2,7 @@
 #include "Component.h"
 #include "../utils/Vector2f.h"
 
-struct Vector2f;
+class GameObject;
 
 namespace OthelloComponent
 {
@@ -11,7 +11,7 @@ namespace OthelloComponent
     public:
         Transform();
         Transform(float x, float y);
-        virtual ~Transform() override = default;
+        virtual ~Transform() override;
 
         // Position
         const Vector2f& GetPosition() const { return m_localPosition; }
@@ -24,8 +24,12 @@ namespace OthelloComponent
         void            SetScale(float s) { m_scale = { s, s }; }
         void            SetScale(float x, float y) { m_scale = { x, y }; }
 
+        const Transform* GetParent() { return m_parent; }
+        void             SetParent(Transform* parent);
     private:
+        Transform* m_parent = nullptr;
+        std::vector<Transform*> m_children;
         Vector2f m_localPosition;
-        Vector2f m_scale;
+        Vector2f m_scale = Vector2f::one;
 	};
 }

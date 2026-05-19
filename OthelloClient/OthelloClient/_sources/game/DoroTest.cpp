@@ -7,10 +7,10 @@
 OthelloGameObject::DoroTest::DoroTest()
 {
 	using namespace OthelloComponent;
-	Transform* tr = GetComponent<Transform>();
 	AddComponent<DoroComponent>();
 	AddComponent<GDISpriteRenderer>()->LoadSprite(L"_resources/sprite/Doro.png");
 	
+	Transform* tr = GetComponent<Transform>();
 	tr->SetPosition(200, 113);
 	tr->SetScale(200, 113);
 }
