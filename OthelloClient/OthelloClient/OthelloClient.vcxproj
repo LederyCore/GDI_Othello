@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="_sources\components\Button.cpp" />
     <ClCompile Include="_sources\core\Engine\InputSystem.cpp" />
     <ClCompile Include="_sources\components\DoroComponent.cpp" />
     <ClCompile Include="_sources\utils\Renderhelp.cpp" />
@@ -45,6 +46,7 @@
     <ClCompile Include="_sources\utils\Vector2f.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="_sources\components\Button.h" />
     <ClInclude Include="_sources\core\Engine\InputSystem.h" />
     <ClInclude Include="_sources\components\DoroComponent.h" />
     <ClInclude Include="_sources\utils\Renderhelp.h" />

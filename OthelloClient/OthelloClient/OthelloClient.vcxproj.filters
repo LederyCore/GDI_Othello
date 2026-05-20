@@ -78,6 +78,9 @@
     <ClCompile Include="_sources\core\Engine\InputSystem.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="_sources\components\Button.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="_sources\core\pch.h">
@@ -141,6 +144,9 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="_sources\core\Engine\InputSystem.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="_sources\components\Button.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

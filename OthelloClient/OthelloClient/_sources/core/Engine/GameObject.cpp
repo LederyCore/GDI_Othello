@@ -25,7 +25,8 @@ void GameObject::FixedUpdate(float fixedTime)
 	if (!m_isActive) return;
 	for (const auto& c : m_components)
 	{
-		c->FixedUpdate(fixedTime);
+		if (c->GetActive())
+			c->FixedUpdate(fixedTime);
 	}
 }
 
@@ -37,14 +38,16 @@ void GameObject::Update(float deltaTime)
 	{
 		for (const auto& c : m_components)
 		{
-			c->Start();
+			if (c->GetActive())
+				c->Start();
 		}
 		m_isStarted = true;
 	}
 
 	for (const auto& c : m_components)
 	{
-		c->Update(deltaTime);
+		if (c->GetActive())
+			c->Update(deltaTime);
 	}
 }
 
@@ -53,7 +56,8 @@ void GameObject::LateUpdate(float deltaTime)
 	if (!m_isActive) return;
 	for (const auto& c : m_components)
 	{
-		c->LateUpdate(deltaTime);
+		if (c->GetActive())
+			c->LateUpdate(deltaTime);
 	}
 }
 
@@ -61,7 +65,8 @@ void GameObject::Render(HDC hdc)
 {
 	for (const auto& c : m_components)
 	{
-		c->Render(hdc);
+		if (c->GetActive())
+			c->Render(hdc);
 	}
 }
 

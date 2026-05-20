@@ -137,7 +137,6 @@ bool OthelloComponent::GDISpriteRenderer::LoadBMP(const wchar_t* filePath)
     return true;
 }
 
-
 void OthelloComponent::GDISpriteRenderer::Render(HDC hdc)
 {
     auto* tr = GetOwner()->GetComponent<OthelloComponent::Transform>();

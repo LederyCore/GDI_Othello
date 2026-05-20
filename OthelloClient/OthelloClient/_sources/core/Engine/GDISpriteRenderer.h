@@ -21,7 +21,6 @@ namespace OthelloComponent
         int GetWidth()  const { return m_imgWidth; }
         int GetHeight() const { return m_imgHeight; }
 
-
     private:
         bool LoadPNG(const wchar_t* filePath);
         bool LoadBMP(const wchar_t* filePath);
