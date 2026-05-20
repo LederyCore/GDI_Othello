@@ -4,6 +4,7 @@ class WndBase;
 class Renderer;
 class SceneManager;
 class GameTimer;
+class InputSystem;
 
 class Engine
 {
@@ -24,6 +25,7 @@ private:
 private:
 	GameTimer* m_timer = nullptr;
 	WndBase* m_window = nullptr;
+	InputSystem* m_inputSystem = nullptr;
 	Renderer* m_renderer = nullptr;
 	SceneManager* m_sceneManager = nullptr;
 

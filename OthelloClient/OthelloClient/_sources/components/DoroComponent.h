@@ -11,6 +11,7 @@ namespace OthelloComponent
 
         void Start() override;
         void FixedUpdate(float fixedTime) override;
+        void Update(float deltaTime) override;
 
     private:
         // 움직임 관련

@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "GDISpriteRenderer.h"
 #include "../Engine/GameObject.h"
-#include "../Engine/Transform.h"
+#include "../components/Transform.h"
 #include "../utils/DebugConsole.h"
 #include "../utils/Vector2f.h"
 

@@ -19,12 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="_sources\core\Engine\InputSystem.cpp" />
     <ClCompile Include="_sources\components\DoroComponent.cpp" />
     <ClCompile Include="_sources\utils\Renderhelp.cpp" />
     <ClCompile Include="_sources\game\DoroTest.cpp" />
     <ClCompile Include="_sources\core\Engine\GDISpriteRenderer.cpp" />
     <ClCompile Include="_sources\core\Engine\Scene.cpp" />
-    <ClCompile Include="_sources\core\Engine\Transform.cpp" />
+    <ClCompile Include="_sources\components\Transform.cpp" />
     <ClCompile Include="_sources\game\GameManager.cpp" />
     <ClCompile Include="_sources\core\Engine\Component.cpp" />
     <ClCompile Include="_sources\scenes\TitleScene.cpp" />
@@ -44,13 +45,14 @@
     <ClCompile Include="_sources\utils\Vector2f.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="_sources\core\Engine\InputSystem.h" />
     <ClInclude Include="_sources\components\DoroComponent.h" />
     <ClInclude Include="_sources\utils\Renderhelp.h" />
     <ClInclude Include="_sources\game\DoroTest.h" />
     <ClInclude Include="_sources\core\Engine\GDISpriteRenderer.h" />
     <ClInclude Include="_sources\utils\DebugConsole.h" />
     <ClInclude Include="_sources\utils\Vector2f.h" />
-    <ClInclude Include="_sources\core\Engine\Transform.h" />
+    <ClInclude Include="_sources\components\Transform.h" />
     <ClInclude Include="_sources\game\GameManager.h" />
     <ClInclude Include="_sources\core\Engine\Component.h" />
     <ClInclude Include="_sources\scenes\TitleScene.h" />

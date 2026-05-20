@@ -5,3 +5,8 @@ void OthelloWindow::OnClose()
 {
 
 }
+
+void OthelloWindow::ProcessInput()
+{
+
+}

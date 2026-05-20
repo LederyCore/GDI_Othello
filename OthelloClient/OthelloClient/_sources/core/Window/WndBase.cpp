@@ -5,10 +5,52 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	switch (msg)
 	{
+	case WM_MOUSEMOVE:
+	{
+		WndBase* pWnd = (WndBase*)GetWindowLongPtr(hwnd, GWLP_USERDATA);
+		if (pWnd && pWnd->m_onMouseMove) pWnd->m_onMouseMove(LOWORD(lParam), HIWORD(lParam));
+		break;
+	}
+	case WM_LBUTTONDOWN:
+	{
+		WndBase* pWnd = (WndBase*)GetWindowLongPtr(hwnd, GWLP_USERDATA);
+		if (pWnd && pWnd->m_onMouseDown) pWnd->m_onMouseDown(0, LOWORD(lParam), HIWORD(lParam));
+		break;
+	}
+	case WM_LBUTTONUP:
+	{
+		WndBase* pWnd = (WndBase*)GetWindowLongPtr(hwnd, GWLP_USERDATA);
+		if (pWnd && pWnd->m_onMouseUp) pWnd->m_onMouseUp(0, LOWORD(lParam), HIWORD(lParam));
+		break;
+	}
+	case WM_RBUTTONDOWN:
+	{
+		WndBase* pWnd = (WndBase*)GetWindowLongPtr(hwnd, GWLP_USERDATA);
+		if (pWnd && pWnd->m_onMouseDown) pWnd->m_onMouseDown(1, LOWORD(lParam), HIWORD(lParam));
+		break;
+	}
+	case WM_RBUTTONUP:
+	{
+		WndBase* pWnd = (WndBase*)GetWindowLongPtr(hwnd, GWLP_USERDATA);
+		if (pWnd && pWnd->m_onMouseUp) pWnd->m_onMouseUp(1, LOWORD(lParam), HIWORD(lParam));
+		break;
+	}
+	case WM_KEYDOWN:
+	{
+		WndBase* pWnd = (WndBase*)GetWindowLongPtr(hwnd, GWLP_USERDATA);
+		if (pWnd && pWnd->m_onKeyDown) pWnd->m_onKeyDown((int)wParam);
+		break;
+	}
+	case WM_KEYUP:
+	{
+		WndBase* pWnd = (WndBase*)GetWindowLongPtr(hwnd, GWLP_USERDATA);
+		if (pWnd && pWnd->m_onKeyUp) pWnd->m_onKeyUp((int)wParam);
+		break;
+	}
 	case WM_SIZE:
 	{
 		WndBase* pWnd = (WndBase*)GetWindowLongPtr(hwnd, GWLP_USERDATA);
-		if (pWnd) pWnd->OnResize(LOWORD(lParam), HIWORD(lParam));
+		if (pWnd && pWnd->m_onResize) pWnd->m_onResize(LOWORD(lParam), HIWORD(lParam));
 		break;
 	}
 	case WM_CLOSE:

@@ -1,6 +1,7 @@
 #pragma once
-#include "Component.h"
+#include "../core/Engine/Component.h"
 #include "../utils/Vector2f.h"
+#include "../core/Engine/InputSystem.h"
 
 class GameObject;
 

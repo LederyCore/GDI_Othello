@@ -3,6 +3,7 @@
 #include "Window/OthelloWindow.h"
 #include "Renderer/GDIRenderer.h"
 #include "SceneManager.h"
+#include "InputSystem.h"
 #include "Scene.h"
 #include "../utils/GameTimer.h"
 #include "../utils/DebugConsole.h"
@@ -15,6 +16,7 @@ Engine::Engine()
 {
 	m_timer = new GameTimer();
 	m_window = new OthelloWindow();
+	m_inputSystem = new InputSystem();
 	m_renderer = new GDIRenderer();
 	m_sceneManager = new SceneManager();
 }
@@ -26,6 +28,9 @@ Engine::~Engine()
 
 	delete m_renderer;
 	m_renderer = nullptr;  
+
+	delete m_inputSystem;
+	m_inputSystem = nullptr;
 
 	delete m_window;
 	m_window = nullptr;   
@@ -48,10 +53,10 @@ bool Engine::Initialize(int width, int height)
 		return false;
 	}
 
-	m_renderer		->Initialize(m_window->GetHandle());
+	void* handle = m_window->GetHandle();
+	m_inputSystem	->Initialize(m_window);
+	m_renderer		->Initialize(handle);
 	m_sceneManager	->Initialize();
-
-	//renderHelp::Initialize();
 
 	LOG_INFO("엔진 초기화 완료");
 	return true;
@@ -109,9 +114,7 @@ void Engine::Shutdown()
 
 void Engine::Input()
 {
-	Scene* scene = m_sceneManager->GetActiveScene();
-
-	
+	m_inputSystem->Flush();
 }
 
 void Engine::FixedUpdate(float fixedTime)
