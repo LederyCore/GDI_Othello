@@ -4,6 +4,7 @@
 #include "../components/Transform.h"
 #include "../utils/DebugConsole.h"
 #include "../utils/Vector2f.h"
+#include <algorithm>
 
 #pragma comment(lib, "windowscodecs.lib")
 #pragma comment(lib, "msimg32.lib")
@@ -45,6 +46,17 @@ bool OthelloComponent::GDISpriteRenderer::LoadSprite(const wchar_t* filePath)
     return ok;
 }
 
+void OthelloComponent::GDISpriteRenderer::SetAlpha(int targetAlpha)
+{
+    m_targetAlpha = targetAlpha;
+}
+
+void OthelloComponent::GDISpriteRenderer::SetBrightness(float brightness)
+{
+    m_brightness = std::clamp(brightness, 0.0f, 1.0f);
+    ApplyBrightness();
+}
+
 bool OthelloComponent::GDISpriteRenderer::LoadPNG(const wchar_t* filePath)
 {
     if (m_hBitmap) { DeleteObject(m_hBitmap); m_hBitmap = nullptr; }
@@ -76,8 +88,8 @@ bool OthelloComponent::GDISpriteRenderer::LoadPNG(const wchar_t* filePath)
         WICBitmapDitherTypeNone,
         nullptr, 0.0f,
         WICBitmapPaletteTypeCustom);
-    if (FAILED(hr)) goto CLEANUP;
 
+    if (FAILED(hr)) goto CLEANUP;
     {
         UINT w = 0, h = 0;
         pFrame->GetSize(&w, &h);
@@ -104,6 +116,13 @@ bool OthelloComponent::GDISpriteRenderer::LoadPNG(const wchar_t* filePath)
             m_imgWidth * 4,
             m_imgWidth * m_imgHeight * 4,
             (BYTE*)pvBits);
+
+        if (SUCCEEDED(hr))
+        {
+            m_originalPixels.assign(
+                (BYTE*)pvBits,
+                (BYTE*)pvBits + m_imgWidth * m_imgHeight * 4);
+        }
     }
 
 CLEANUP:
@@ -137,6 +156,29 @@ bool OthelloComponent::GDISpriteRenderer::LoadBMP(const wchar_t* filePath)
     return true;
 }
 
+void OthelloComponent::GDISpriteRenderer::ApplyBrightness()
+{
+    if (!m_hBitmap || m_originalPixels.empty()) return;
+
+    // DIBSection에서 픽셀 포인터 직접 접근
+    DIBSECTION ds = {};
+    GetObject(m_hBitmap, sizeof(DIBSECTION), &ds);
+    BYTE* pixels = (BYTE*)ds.dsBm.bmBits;
+    if (!pixels) return;
+
+    int pixelCount = m_imgWidth * m_imgHeight;
+    for (int i = 0; i < pixelCount; i++)
+    {
+        int b = i * 4;
+        // PBGRA 포맷: Blue, Green, Red, Alpha 순서
+        // Alpha는 건드리지 않고 RGB만 스케일링
+        pixels[b + 0] = (BYTE)(m_originalPixels[b + 0] * m_brightness); // B
+        pixels[b + 1] = (BYTE)(m_originalPixels[b + 1] * m_brightness); // G
+        pixels[b + 2] = (BYTE)(m_originalPixels[b + 2] * m_brightness); // R
+        pixels[b + 3] = m_originalPixels[b + 3];                        // A 유지
+    }
+}
+
 void OthelloComponent::GDISpriteRenderer::Render(HDC hdc)
 {
     auto* tr = GetOwner()->GetComponent<OthelloComponent::Transform>();
@@ -159,7 +201,7 @@ void OthelloComponent::GDISpriteRenderer::Render(HDC hdc)
         BLENDFUNCTION bf = {};
         bf.BlendOp = AC_SRC_OVER;
         bf.BlendFlags = 0;
-        bf.SourceConstantAlpha = 255;
+        bf.SourceConstantAlpha = m_targetAlpha;
         bf.AlphaFormat = AC_SRC_ALPHA;
 
         AlphaBlend(

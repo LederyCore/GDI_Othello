@@ -7,6 +7,14 @@
 namespace OthelloComponent
 {
     class Transform;
+    class GDISpriteRenderer;
+
+    enum class ButtonState
+    {
+        Normal,
+        Hovered,
+        Pressed
+    };
 
     class Button : public Component
     {
@@ -30,7 +38,8 @@ namespace OthelloComponent
         bool CheckInternal(const Vector2f& vec) const;
 
     private:
-        struct Point4 {
+        struct Point4 
+        {
             Vector2f LeftTop;
             Vector2f LeftBottom;
             Vector2f RightTop;
@@ -38,10 +47,23 @@ namespace OthelloComponent
         };
 
         Transform* m_tr = nullptr;
+        GDISpriteRenderer* m_gs = nullptr;
         Vector2f   m_pos;
         float      m_width = 50.f;
         float      m_height = 50.f;
         Point4     m_point4 = {};
+
+        // 버튼 상호작용 상태별 알파값 변경
+        int m_hoveredAlpha = 220;
+        int m_originAlpha = 255;
+        int m_clickedAlpha = 180;
+
+        // 버튼 상호작용 상태별 명암값 변경
+        float m_hoveredBright = 0.7f;
+        float m_originBright = 1.0f;
+        float m_clickedBright = 0.4f;
+
+        ButtonState m_currentState;
 
         // 이전 프레임 상태
         bool m_isHovered = false;

@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="_sources\game\TitleUI.cpp" />
     <ClCompile Include="_sources\components\Button.cpp" />
     <ClCompile Include="_sources\core\Engine\InputSystem.cpp" />
     <ClCompile Include="_sources\components\DoroComponent.cpp" />
@@ -46,6 +47,7 @@
     <ClCompile Include="_sources\utils\Vector2f.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="_sources\game\TitleUI.h" />
     <ClInclude Include="_sources\components\Button.h" />
     <ClInclude Include="_sources\core\Engine\InputSystem.h" />
     <ClInclude Include="_sources\components\DoroComponent.h" />
@@ -70,7 +72,13 @@
     <ClInclude Include="_sources\core\pch.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="_resources\sprite\Doro.png" />
+    <Image Include="_resources\sprite\BlackDoro100_100.png" />
+    <Image Include="_resources\sprite\Doro100_100.png" />
+    <Image Include="_resources\sprite\DoroButton_Alpha_206_95.png" />
+    <Image Include="_resources\sprite\DoroButton_GameHow_206_95.png" />
+    <Image Include="_resources\sprite\DoroButton_GameQuit_206_95.png" />
+    <Image Include="_resources\sprite\DoroButton_GameStart_206_95.png" />
+    <Image Include="_resources\sprite\OdoroTitle.png" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

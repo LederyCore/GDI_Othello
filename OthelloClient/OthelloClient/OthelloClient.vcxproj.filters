@@ -81,6 +81,9 @@
     <ClCompile Include="_sources\components\Button.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="_sources\game\TitleUI.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="_sources\core\pch.h">
@@ -149,9 +152,30 @@
     <ClInclude Include="_sources\components\Button.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="_sources\game\TitleUI.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="_resources\sprite\Doro.png">
+    <Image Include="_resources\sprite\BlackDoro100_100.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="_resources\sprite\Doro100_100.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="_resources\sprite\OdoroTitle.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="_resources\sprite\DoroButton_GameHow_206_95.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="_resources\sprite\DoroButton_GameQuit_206_95.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="_resources\sprite\DoroButton_GameStart_206_95.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="_resources\sprite\DoroButton_Alpha_206_95.png">
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>

@@ -2,6 +2,7 @@
 #include "TitleScene.h"
 #include "../utils/DebugConsole.h"
 #include "../game/GameManager.h"
+#include "../game/TitleUI.h"
 
 
 TitleScene::TitleScene()
@@ -17,5 +18,6 @@ TitleScene::~TitleScene()
 void TitleScene::Enter()
 {
 	using namespace OthelloGameObject;
-	AddGameObject(new OthelloGameObject::GameManager());
+	AddGameObject(new TitleUI());
+	AddGameObject(new GameManager());
 }
